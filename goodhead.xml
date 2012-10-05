@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_GOODHEAD</name>
+    <author>PDXfixIT and Marketing Portland</author>
+    <creationDate>October 2012</creationDate>
+    <copyright>Copyleft (c) 2012 PDXfixIT and Marketing Portland</copyright>
+    <authorEmail>info@pdxfixit.com</authorEmail>
+    <authorUrl>http://www.pdxfixit.com</authorUrl>
+    <version>1.0</version>
+    <description><![CDATA[<div style="text-align:center;"><a href="http://www.marketingportland.com/" target="_blank"><img src="http://updates.pdxfixit.com/mp-logo.jpg" alt="Marketing Portland" border="0"/></a><br />&nbsp;<br /><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/logo.png" alt="PDXfixIT" border="0"/></a><br /><br />Good Head Plugin<br />Release Date: October 11, 2012<br />Version: 1.0<br /><br />This plugin allows the modification of various header tags for your site.</div>]]></description>
+    <files>
+        <file plugin="goodhead">goodhead.php</file>
+        <filename>index.html</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_goodhead.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_goodhead.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="basic_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_DESCRIPTION" />
+            </fieldset>
+            <fieldset label="PLG_SYSTEM_GOODHEAD_OPENGRAPH" name="opengraph">
+                <field name="opengraph_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_DESCRIPTION" />
+            </fieldset>
+            <fieldset label="PLG_SYSTEM_GOODHEAD_DC" name="dc">
+                <field name="dc_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_DC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_DC_FIELD_DESCRIPTION" />
+            </fieldset>
+            <fieldset label="PLG_SYSTEM_GOODHEAD_OTHER" name="other">
+                <field name="other_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
