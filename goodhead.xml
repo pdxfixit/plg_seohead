@@ -12,9 +12,9 @@
         <file plugin="goodhead">goodhead.php</file>
         <filename>index.html</filename>
     </files>
-    <languages>
-        <language tag="en-GB">languages/en-GB/en-GB.plg_system_goodhead.ini</language>
-        <language tag="en-GB">languages/en-GB/en-GB.plg_system_goodhead.sys.ini</language>
+    <languages folder="languages">
+        <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.sys.ini</language>
     </languages>
     <config>
         <fields name="params">

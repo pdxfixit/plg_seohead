@@ -6,7 +6,7 @@ jimport('joomla.plugin.plugin');
 
 class plgSystemGoodHead extends JPlugin {
 
-    function plgSystemGoodHead(&$subject, $config) {
+    public function plgSystemGoodHead(&$subject, $config) {
         parent::__construct($subject, $config);
 
         $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
@@ -73,7 +73,7 @@ class plgSystemGoodHead extends JPlugin {
         return true;
     }
 
-    function onAfterRender() {
+    public function onAfterRender() {
         $mainframe = JFactory::getApplication();
 
         $web_property_id = $this->params->get('web_property_id', '');
