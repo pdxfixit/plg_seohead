@@ -13,8 +13,8 @@
         <filename>index.html</filename>
     </files>
     <languages>
-        <language tag="en-GB">language/en-GB/en-GB.plg_system_goodhead.ini</language>
-        <language tag="en-GB">language/en-GB/en-GB.plg_system_goodhead.sys.ini</language>
+        <language tag="en-GB">languages/en-GB/en-GB.plg_system_goodhead.ini</language>
+        <language tag="en-GB">languages/en-GB/en-GB.plg_system_goodhead.sys.ini</language>
     </languages>
     <config>
         <fields name="params">
