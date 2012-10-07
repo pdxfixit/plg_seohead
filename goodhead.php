@@ -64,19 +64,32 @@ class plgSystemGoodHead extends JPlugin {
      * @since   1.0
      */
     private function generateDublinCoreTags() {
+        // Set variables
+        $name = $this->params->get('business');
+        $contact = $this->params->get('contact');
+        $email = $this->params->get('email');
+        $est = $this->params->get('established');
+        
+        if (!empty($name)) {
+            $copyrightName = ', ' . $name;
+        }
+        if (!empty($est)) {
+            $est .= ' &ndash; ';
+        }
+
         $this->_head .= $this->linkTag('schema.DC', 'http://purl.org/dc/elements/1.1/');
         $this->_head .= $this->linkTag('schema.DCTERMS', 'http://purl.org/dc/terms/');
         $this->_head .= $this->metaTag('DC.title', $this->_documentTitle);
-        $this->_head .= $this->metaTag('DC.creator', $this->params->get('business'));
+        $this->_head .= $this->metaTag('DC.creator', $name);
         $this->_head .= $this->metaTag('DC.subject', $this->_metaKeys);
         $this->_head .= $this->metaTag('DC.description', $this->_metaDesc);
-        $this->_head .= $this->metaTag('DC.publisher', $this->params->get('business'));
-        $this->_head .= $this->metaTag('DC.publisher.address', $this->params->get('email'));
-        $this->_head .= $this->metaTag('DC.contributor', $this->params->get('contact'));
-        $this->_head .= $this->metaTag('DC.type', $this->params->get('Text'), 'DCTERMS.DCMIType');
+        $this->_head .= $this->metaTag('DC.publisher', $name);
+        $this->_head .= $this->metaTag('DC.publisher.address', $email);
+        $this->_head .= $this->metaTag('DC.contributor', $contact);
+        $this->_head .= $this->metaTag('DC.type', 'Text', 'DCTERMS.DCMIType');
         $this->_head .= $this->metaTag('DC.format', 'text/html');
         $this->_head .= $this->metaTag('DC.identifier', $this->_currentURI, 'DCTERMS.DCMIType');
-        $this->_head .= $this->metaTag('DC.rights', 'Copyright &copy; ' . $this->params->get('established') . ' &ndash; ' . date('Y') . ', ' . $this->params->get('business') . '. All rights reserved.');
+        $this->_head .= $this->metaTag('DC.rights', 'Copyright &copy; ' . $est . date('Y') . $copyrightName . '. All rights reserved.');
     }
 
     /**
@@ -159,13 +172,25 @@ class plgSystemGoodHead extends JPlugin {
      * @since   1.0
      */
     private function generateOtherMetaTags() {
+        // Set variables
         $lat = $this->params->get('latitude');
         $long = $this->params->get('longitude');
+        $city = $this->params->get('city');
+        $state = $this->params->get('state');
+        $country = $this->params->get('country');
+        
+        if (!empty($state)) {
+            $state = ', ' . $state;
+        }
+        if (!empty($country)) {
+            $country = ' ' . $country;
+        }
+
         if (!empty($lat) && !empty($long)) {
             $this->_head .= $this->metaTag('ICBM', $lat . ', ' . $long);
             $this->_head .= $this->metaTag('geo.position', $lat . ';' . $long);
         }
-        $this->_head .= $this->metaTag('geo.placename', $this->params->get('city') . ', ' . $this->params->get('state') . ' ' . $this->params->get('country'));
+        $this->_head .= $this->metaTag('geo.placename', $city . $state . $country);
         $this->_head .= $this->metaTag('google-site-verification', $this->params->get('googleverify'));
         $this->_head .= $this->metaTag('alexaVerifyID', $this->params->get('alexaverify'));
         $this->_head .= $this->metaTag('blogcatalog', $this->params->get('blogcatalog'));
