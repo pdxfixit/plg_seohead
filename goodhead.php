@@ -12,7 +12,7 @@ jimport('joomla.plugin.plugin');
  */
 class plgSystemGoodHead extends JPlugin {
 
-    private $_fields = array('basic', 'opengraph', 'dc', 'other');
+    private $_fields = array();
     protected $_head = null;
 
     /**
@@ -28,12 +28,8 @@ class plgSystemGoodHead extends JPlugin {
         parent::__construct($subject, $config);
 
         $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
-        
-        if (strpos(JVERSION, '2.5')) { // Joomla! 2.5
-            $this->_params = new JParameter($this->_plugin->params);
-        } else { // In Joomla! Platform 12.1, JParameter has been replaced with JForm.
-            $this->_params = new JForm($this->_plugin->params);
-        }
+        $this->_params = new JForm($this->_plugin->params);
+        $this->getFieldsFromXML();
     }
 
     /**
@@ -50,6 +46,48 @@ class plgSystemGoodHead extends JPlugin {
 
         foreach ($data as $name => $content) {
             $this->_head .= $this->metaTag($name, $content);
+        }
+    }
+
+    /**
+     * Method to get fields from the XML file for simplicity.
+     *
+     * @access  private
+     * @return  void
+     * @since   1.0
+     */
+    private function getFieldsFromXML() {
+        // get the filename of the XML manifest
+        $file = explode(DIRECTORY_SEPARATOR, __FILE__);
+        array_pop($file);
+        $file[] = 'goodhead.xml';
+        $file = implode(DIRECTORY_SEPARATOR, $file);
+
+        // parse the XML manifest, so we know what the fields are.
+        $dom = new DOMDocument;
+        $dom->loadXML(file_get_contents($file));
+        if ($dom) {
+            $xml = simplexml_import_dom($dom);
+            $fieldsetsObject = (array) $xml->config[0]->fields[0];
+            $fieldsets = (array) $fieldsetsObject['fieldset'];
+            foreach ($fieldsets as $fieldsetObject) {
+                $fieldset = (array) $fieldsetObject;
+                unset($fieldset['@attributes']);
+                
+                if (is_array($fieldset['field'])) {
+                    $preparedFieldset = $fieldset['field'];
+                } else {
+                    $preparedFieldset = array();
+                    $preparedFieldset[] = $fieldset['field'];
+                }
+                
+                foreach ($preparedFieldset as $fieldObject) {
+                    $fieldArray = (array) $fieldObject;
+                    $field = $fieldArray['@attributes'];
+                    $this->_fields[] = (string) $field['name'];
+                }
+            }
+            die(var_export($this->_fields, 1));
         }
     }
 
