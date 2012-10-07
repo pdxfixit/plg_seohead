@@ -21,13 +21,13 @@
             <fieldset name="basic">
                 <field name="basic_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_DESCRIPTION" />
             </fieldset>
-            <fieldset label="PLG_SYSTEM_GOODHEAD_OPENGRAPH" name="opengraph">
+            <fieldset name="opengraph" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH">
                 <field name="opengraph_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_DESCRIPTION" />
             </fieldset>
-            <fieldset label="PLG_SYSTEM_GOODHEAD_DC" name="dc">
+            <fieldset name="dc" label="PLG_SYSTEM_GOODHEAD_DC">
                 <field name="dc_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_DC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_DC_FIELD_DESCRIPTION" />
             </fieldset>
-            <fieldset label="PLG_SYSTEM_GOODHEAD_OTHER" name="other">
+            <fieldset name="other" label="PLG_SYSTEM_GOODHEAD_OTHER">
                 <field name="other_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_DESCRIPTION" />
             </fieldset>
         </fields>
