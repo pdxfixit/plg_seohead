@@ -4,11 +4,26 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
 
+/**
+ * Plugin class for adding extra fields to the HTML <head>.
+ *
+ * @package	Joomla.Plugin
+ * @subpackage	System.goodhead
+ */
 class plgSystemGoodHead extends JPlugin {
 
     private $_fields = array('basic', 'opengraph', 'dc', 'other');
     protected $_head = null;
 
+    /**
+     * Object Constructor.
+     *
+     * @access	public
+     * @param	object	The object to observe -- event dispatcher.
+     * @param	object	The configuration object for the plugin.
+     * @return	void
+     * @since	1.0
+     */
     public function plgSystemGoodHead(&$subject, $config) {
         parent::__construct($subject, $config);
 
@@ -16,6 +31,12 @@ class plgSystemGoodHead extends JPlugin {
         $this->_params = new JParameter($this->_plugin->params);
     }
 
+    /**
+     * Method to collect data from the parameters.
+     * 
+     * @return  void
+     * @since   1.0
+     */
     private function collectData() {
         foreach ($this->_fields as $field) {
             $data[$field] = $this->params->get($field . '_field', '');
@@ -26,6 +47,14 @@ class plgSystemGoodHead extends JPlugin {
         }
     }
 
+    /**
+     * Method to create the meta tags.
+     *
+     * @param   string  Name for the meta tag
+     * @param   string  Content for the meta tag
+     * @return  string  Meta tag
+     * @since   1.0
+     */
     private function metaTag($name, $content) {
         return '<meta name="' . $name . '" content="' . $content . '" />' . "\n  ";
     }
@@ -34,8 +63,7 @@ class plgSystemGoodHead extends JPlugin {
      * Method to catch the onAfterRender event.
      *
      * @return  boolean  True on success
-     *
-     * @since   2.5
+     * @since   1.0
      */
     public function onAfterRender() {
         // Set the variables
