@@ -66,7 +66,7 @@ class plgSystemGoodHead extends JPlugin {
     private function generateDublinCoreTags() {
         $this->_head .= $this->linkTag('schema.DC', 'http://purl.org/dc/elements/1.1/');
         $this->_head .= $this->linkTag('schema.DCTERMS', 'http://purl.org/dc/terms/');
-        $this->_head .= $this->metaTag('DC.title', $this->_documentTitle;
+        $this->_head .= $this->metaTag('DC.title', $this->_documentTitle);
         $this->_head .= $this->metaTag('DC.creator', $this->params->get('business'));
         $this->_head .= $this->metaTag('DC.subject', $this->_metaKeys);
         $this->_head .= $this->metaTag('DC.description', $this->_metaDesc);
