@@ -10,24 +10,40 @@
     <description><![CDATA[<div style="text-align:center;"><a href="http://www.marketingportland.com/" target="_blank"><img src="http://updates.pdxfixit.com/mp-logo.jpg" alt="Marketing Portland" border="0"/></a><br />&nbsp;<br /><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/logo.png" alt="PDXfixIT" border="0"/></a><br /><br />Good Head Plugin<br />Release Date: October 11, 2012<br />Version: 1.0<br /><br />This plugin allows the modification of various header tags for your site.</div>]]></description>
     <files>
         <file plugin="goodhead">goodhead.php</file>
+        <filename>goodhead.xml</filename>
         <filename>index.html</filename>
     </files>
     <languages folder="languages">
-        <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.ini</language>
-        <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.sys.ini</language>
-    </languages>
-    <config>
-        <fields name="params">
-            <fieldset name="basic">
-                <field name="basic_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_BASIC_FIELD_DESCRIPTION" />
+       <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.ini</language>
+       <language tag="en-GB">en-GB/en-GB.plg_system_goodhead.sys.ini</language>
+   </languages>
+   <config>
+       <fields name="params">
+
+           <fieldset name="essentials" label="PLG_SYSTEM_GOODHEAD_BUSINESS_ESSENTIALS">
+               <field name="business_name" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BUSINESS_NAME" description="PLG_SYSTEM_GOODHEAD_BUSINESS_NAME_DESC" />
+               <field name="address" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ADDRESS" description="PLG_SYSTEM_GOODHEAD_ADDRESS_DESC" />
+               <field name="city" type="text" default="" label="PLG_SYSTEM_GOODHEAD_CITY" description="PLG_SYSTEM_GOODHEAD_CITY_DESC" />
+               <field name="state" type="text" default="" label="PLG_SYSTEM_GOODHEAD_STATE" description="PLG_SYSTEM_GOODHEAD_STATE_DESC" />
+               <field name="zip" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ZIP" description="PLG_SYSTEM_GOODHEAD_ZIP_DESC" />
+               <field name="country" type="text" default="" label="PLG_SYSTEM_GOODHEAD_COUNTRY" description="PLG_SYSTEM_GOODHEAD_COUNTRY_DESC" />
+               <field name="phone" type="text" default="" label="PLG_SYSTEM_GOODHEAD_PHONE" description="PLG_SYSTEM_GOODHEAD_PHONE_DESC" />
+               <field name="email" type="text" default="" label="PLG_SYSTEM_GOODHEAD_EMAIL" description="PLG_SYSTEM_GOODHEAD_EMAIL_DESC" />
+               <field name="first_year" type="text" default="" label="PLG_SYSTEM_GOODHEAD_EST" description="PLG_SYSTEM_GOODHEAD_EST_DESC" />
+               <field name="contact" type="text" default="" label="PLG_SYSTEM_GOODHEAD_CONTACT" description="PLG_SYSTEM_GOODHEAD_CONTACT_DESC" />
+               <field name="latitude" type="text" default="" label="PLG_SYSTEM_GOODHEAD_LAT" description="PLG_SYSTEM_GOODHEAD_LAT_DESC" />
+               <field name="longitude" type="text" default="" label="PLG_SYSTEM_GOODHEAD_LONG" description="PLG_SYSTEM_GOODHEAD_LONG_DESC" />
+               <field name="google_verification" type="text" default="" label="PLG_SYSTEM_GOODHEAD_GVERIFY" description="PLG_SYSTEM_GOODHEAD_GVERIFY_DESC" />
+               <field name="alexa" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY" description="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY_DESC" />
+               <field name="blogcatalog" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BLOGCATALOG" description="PLG_SYSTEM_GOODHEAD_BLOGCATALOG_DESC" />
             </fieldset>
-            <fieldset name="opengraph" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH">
+            <fieldset name="opengraph" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH_SETTINGS">
                 <field name="opengraph_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OPENGRAPH_FIELD_DESCRIPTION" />
             </fieldset>
-            <fieldset name="dc" label="PLG_SYSTEM_GOODHEAD_DC">
-                <field name="dc_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_DC_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_DC_FIELD_DESCRIPTION" />
+            <fieldset name="dublincore" label="PLG_SYSTEM_GOODHEAD_DUBLINCORE_SETTINGS">
+                <field name="dublincore_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_DUBLINCORE_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_DUBLINCORE_FIELD_DESCRIPTION" />
             </fieldset>
-            <fieldset name="other" label="PLG_SYSTEM_GOODHEAD_OTHER">
+            <fieldset name="other" label="PLG_SYSTEM_GOODHEAD_OTHERMETA">
                 <field name="other_field" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_LABEL" description="PLG_SYSTEM_GOODHEAD_OTHER_FIELD_DESCRIPTION" />
             </fieldset>
         </fields>
