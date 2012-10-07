@@ -34,7 +34,7 @@
                 <field name="contact" type="text" default="" label="PLG_SYSTEM_GOODHEAD_CONTACT" description="PLG_SYSTEM_GOODHEAD_CONTACT_DESC" />
                 <field name="latitude" type="text" default="" label="PLG_SYSTEM_GOODHEAD_LAT" description="PLG_SYSTEM_GOODHEAD_LAT_DESC" />
                 <field name="longitude" type="text" default="" label="PLG_SYSTEM_GOODHEAD_LONG" description="PLG_SYSTEM_GOODHEAD_LONG_DESC" />
-                <field name="gverify" type="text" default="" label="PLG_SYSTEM_GOODHEAD_GVERIFY" description="PLG_SYSTEM_GOODHEAD_GVERIFY_DESC" />
+                <field name="googleverify" type="text" default="" label="PLG_SYSTEM_GOODHEAD_GVERIFY" description="PLG_SYSTEM_GOODHEAD_GVERIFY_DESC" />
                 <field name="alexaverify" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY" description="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY_DESC" />
                 <field name="blogcatalog" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BLOGCATALOG" description="PLG_SYSTEM_GOODHEAD_BLOGCATALOG_DESC" />
             </fieldset>

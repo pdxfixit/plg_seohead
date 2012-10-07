@@ -13,11 +13,13 @@ jimport('joomla.plugin.plugin');
 class plgSystemGoodHead extends JPlugin {
 
     private $_currentURI = null;
+    private $_documentTitle = null;
     private $_documentType = null;
     private $_dublinCoreFlag = false;
     private $_fields = array();
     private $_locale = null;
     private $_metaDesc = null;
+    private $_metaKeys = null;
     private $_openGraphFlag = false;
     private $_siteName = null;
     protected $_head = null;
@@ -45,6 +47,7 @@ class plgSystemGoodHead extends JPlugin {
         $this->_documentType = $doc->getType();
         $this->_dublinCoreFlag = $this->params->get('dublincore_flag', 0);
         $this->_metaDesc = $app->getCfg('MetaDesc');
+        $this->_metaKeys = $app->getCfg('MetaKeys');
         $this->_openGraphFlag = $this->params->get('opengraph_flag', 0);
         $this->_siteName = $app->getCfg('sitename');
 
@@ -61,7 +64,19 @@ class plgSystemGoodHead extends JPlugin {
      * @since   1.0
      */
     private function generateDublinCoreTags() {
-
+        $this->_head .= $this->linkTag('schema.DC', 'http://purl.org/dc/elements/1.1/');
+        $this->_head .= $this->linkTag('schema.DCTERMS', 'http://purl.org/dc/terms/');
+        $this->_head .= $this->metaTag('DC.title', $this->_documentTitle;
+        $this->_head .= $this->metaTag('DC.creator', $this->params->get('business'));
+        $this->_head .= $this->metaTag('DC.subject', $this->_metaKeys);
+        $this->_head .= $this->metaTag('DC.description', $this->_metaDesc);
+        $this->_head .= $this->metaTag('DC.publisher', $this->params->get('business'));
+        $this->_head .= $this->metaTag('DC.publisher.address', $this->params->get('email'));
+        $this->_head .= $this->metaTag('DC.contributor', $this->params->get('contact'));
+        $this->_head .= $this->metaTag('DC.type', $this->params->get('Text'), 'DCTERMS.DCMIType');
+        $this->_head .= $this->metaTag('DC.format', 'text/html');
+        $this->_head .= $this->metaTag('DC.identifier', $this->_currentURI, 'DCTERMS.DCMIType');
+        $this->_head .= $this->metaTag('DC.rights', 'Copyright &copy; ' . $this->params->get('established') . ' &ndash; ' . date('Y') . ', ' . $this->params->get('business') . '. All rights reserved.');
     }
 
     /**
@@ -91,21 +106,20 @@ class plgSystemGoodHead extends JPlugin {
         } else {
             $type = $this->params->get('opengraph_type', 'article');
         }
-        
+
         // Set variables
         $imagePath = $this->_currentURI . 'images/' . $this->params->get('image');
         $imageData = getimagesize($imagePath);
 
         // required
         $this->_head .= $this->metaTag('og:url', $this->_currentURI, null, true);
-        $this->_head .= $this->metaTag('og:title', $this->getDocumentTitle(), null, true);
+        $this->_head .= $this->metaTag('og:title', $this->_documentTitle, null, true);
         $this->_head .= $this->metaTag('og:type', $type, null, true);
         $this->_head .= $this->metaTag('og:image:url', $imagePath, null, true);
         $this->_head .= $this->metaTag('og:image:type', $imageData['mime'], null, true);
         $this->_head .= $this->metaTag('og:image:height', $imageData[1], null, true);
         $this->_head .= $this->metaTag('og:image:width', $imageData[0], null, true);
         // FUTURE FEATURE: Support og:image:secure_url
-
         // optional
         $this->_head .= $this->metaTag('og:audio', $this->params->get('audio'), null, true);
         $this->_head .= $this->metaTag('og:description', $this->_metaDesc, null, true);
@@ -138,14 +152,23 @@ class plgSystemGoodHead extends JPlugin {
     }
 
     /**
-     * Method to retrieve the document title.
+     * Method to prepare and create all other supported meta tags.
      *
      * @access  private
-     * @return  string  Document title
+     * @return  void
      * @since   1.0
      */
-    private function getDocumentTitle() {
-        return JFactory::getDocument()->getTitle();
+    private function generateOtherMetaTags() {
+        $lat = $this->params->get('latitude');
+        $long = $this->params->get('longitude');
+        if (!empty($lat) && !empty($long)) {
+            $this->_head .= $this->metaTag('ICBM', $lat . ', ' . $long);
+            $this->_head .= $this->metaTag('geo.position', $lat . ';' . $long);
+        }
+        $this->_head .= $this->metaTag('geo.placename', $this->params->get('city') . ', ' . $this->params->get('state') . ' ' . $this->params->get('country'));
+        $this->_head .= $this->metaTag('google-site-verification', $this->params->get('googleverify'));
+        $this->_head .= $this->metaTag('alexaVerifyID', $this->params->get('alexaverify'));
+        $this->_head .= $this->metaTag('blogcatalog', $this->params->get('blogcatalog'));
     }
 
     /**
@@ -243,6 +266,7 @@ class plgSystemGoodHead extends JPlugin {
         // Set the variables
         $buffer = JResponse::getBody();
         $input = JFactory::getApplication()->input;
+        $this->_documentTitle = JFactory::getDocument()->getTitle();
 
         // Use this plugin only in site application, and check if we should insert data into the html header
         if (JFactory::getApplication()->isAdmin() || JFactory::getDocument()->getType() !== 'html' || $input->get('tmpl', '', 'cmd') === 'component') {
@@ -270,6 +294,9 @@ class plgSystemGoodHead extends JPlugin {
             $this->generateDublinCoreTags();
         }
         #$this->prepareData();
+
+        $this->generateOtherMetaTags();
+
         // Get custom meta data
         $other = $this->params->get('other');
         // TODO: SANITIZE $other
