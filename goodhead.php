@@ -14,6 +14,10 @@ class plgSystemGoodHead extends JPlugin {
         $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
         $this->_params = new JParameter($this->_plugin->params);
     }
+    
+    private function collectData() {
+        $this->_head = '<ben saidso="true" />';
+    }
 
     /**
      * Method to catch the onAfterRender event.
@@ -32,10 +36,7 @@ class plgSystemGoodHead extends JPlugin {
         }
         
         // Collect the data
-        
-        
-        // Generate the HTML
-        $this->_head = '<ben saidso="true" />';
+        $this->collectData();
 
         // Adjust the buffer.
         $buffer = JResponse::getBody();
