@@ -34,7 +34,7 @@ class plgSystemGoodHead extends JPlugin {
 
     /**
      * Method to collect data from the parameters.
-     * 
+     *
      * @access  private
      * @return  void
      * @since   1.0
@@ -58,14 +58,15 @@ class plgSystemGoodHead extends JPlugin {
      */
     private function getFieldsFromXML() {
         // get the filename of the XML manifest
-        $file = explode(DIRECTORY_SEPARATOR, __FILE__);
-        array_pop($file);
-        $file[] = 'goodhead.xml';
-        $file = implode(DIRECTORY_SEPARATOR, $file);
+        $pathParts = explode(DIRECTORY_SEPARATOR, __FILE__);
+        $scriptFilename = array_pop($pathParts);
+        $filenameParts = explode('.', $scriptFilename);
+        $pathParts[] = implode('.', array($filenameParts[0], 'xml'));
+        $filePath = implode(DIRECTORY_SEPARATOR, $pathParts);
 
         // parse the XML manifest, so we know what the fields are.
         $dom = new DOMDocument;
-        $dom->loadXML(file_get_contents($file));
+        $dom->loadXML(file_get_contents($filePath));
         if ($dom) {
             $xml = simplexml_import_dom($dom);
             $fieldsetsObject = (array) $xml->config[0]->fields[0];
@@ -73,21 +74,20 @@ class plgSystemGoodHead extends JPlugin {
             foreach ($fieldsets as $fieldsetObject) {
                 $fieldset = (array) $fieldsetObject;
                 unset($fieldset['@attributes']);
-                
+
                 if (is_array($fieldset['field'])) {
                     $preparedFieldset = $fieldset['field'];
                 } else {
                     $preparedFieldset = array();
                     $preparedFieldset[] = $fieldset['field'];
                 }
-                
+
                 foreach ($preparedFieldset as $fieldObject) {
                     $fieldArray = (array) $fieldObject;
                     $field = $fieldArray['@attributes'];
                     $this->_fields[] = (string) $field['name'];
                 }
             }
-            die(var_export($this->_fields, 1));
         }
     }
 
