@@ -28,7 +28,12 @@ class plgSystemGoodHead extends JPlugin {
         parent::__construct($subject, $config);
 
         $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
-        $this->_params = new JParameter($this->_plugin->params);
+        
+        if (strpos(JVERSION, '2.5')) { // Joomla! 2.5
+            $this->_params = new JParameter($this->_plugin->params);
+        } else { // In Joomla! Platform 12.1, JParameter has been replaced with JForm.
+            $this->_params = new JForm($this->_plugin->params);
+        }
     }
 
     /**
