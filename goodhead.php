@@ -34,6 +34,7 @@ class plgSystemGoodHead extends JPlugin {
     /**
      * Method to collect data from the parameters.
      * 
+     * @access  private
      * @return  void
      * @since   1.0
      */
@@ -50,6 +51,7 @@ class plgSystemGoodHead extends JPlugin {
     /**
      * Method to create the meta tags.
      *
+     * @access  private
      * @param   string  Name for the meta tag
      * @param   string  Content for the meta tag
      * @return  string  Meta tag
@@ -62,6 +64,7 @@ class plgSystemGoodHead extends JPlugin {
     /**
      * Method to catch the onAfterRender event.
      *
+     * @access  public
      * @return  boolean  True on success
      * @since   1.0
      */
