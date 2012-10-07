@@ -5,7 +5,8 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.plugin.plugin');
 
 class plgSystemGoodHead extends JPlugin {
-    
+
+    private $_fields = array('basic', 'opengraph', 'dc', 'other');
     protected $_head = null;
 
     public function plgSystemGoodHead(&$subject, $config) {
@@ -14,9 +15,19 @@ class plgSystemGoodHead extends JPlugin {
         $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
         $this->_params = new JParameter($this->_plugin->params);
     }
-    
+
     private function collectData() {
-        $this->_head = '<ben saidso="true" />';
+        foreach ($this->_fields as $field) {
+            $data[$field] = $this->params->get($field . '_field', '');
+        }
+
+        foreach ($data as $name => $content) {
+            $this->_head .= $this->metaTag($name, $content);
+        }
+    }
+
+    private function metaTag($name, $content) {
+        return '<meta name="' . $name . '" content="' . $content . '" />' . "\n  ";
     }
 
     /**
@@ -34,19 +45,17 @@ class plgSystemGoodHead extends JPlugin {
         if (JFactory::getApplication()->isAdmin() || JFactory::getDocument()->getType() !== 'html' || $input->get('tmpl', '', 'cmd') === 'component') {
             return true;
         }
-        
+
         // Collect the data
         $this->collectData();
 
         // Adjust the buffer.
         $buffer = JResponse::getBody();
         $pos = strrpos($buffer, "<title>");
-        $buffer = substr($buffer, 0, $pos) . $this->_head . "\n  " . substr($buffer, $pos);
+        $buffer = substr($buffer, 0, $pos) . $this->_head . substr($buffer, $pos);
         JResponse::setBody($buffer);
 
         return true;
-
-//        $web_property_id = $this->params->get('web_property_id', '');
     }
 
 }
