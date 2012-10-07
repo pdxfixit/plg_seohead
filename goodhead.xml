@@ -19,7 +19,6 @@
    </languages>
    <config>
        <fields name="params">
-
            <fieldset name="essentials" label="PLG_SYSTEM_GOODHEAD_BUSINESS_ESSENTIALS">
                <field name="business_name" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BUSINESS_NAME" description="PLG_SYSTEM_GOODHEAD_BUSINESS_NAME_DESC" />
                <field name="address" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ADDRESS" description="PLG_SYSTEM_GOODHEAD_ADDRESS_DESC" />
