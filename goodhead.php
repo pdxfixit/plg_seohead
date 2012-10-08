@@ -52,7 +52,20 @@ class plgSystemGoodHead extends JPlugin {
         $this->_siteName = $app->getCfg('sitename');
 
         // Collect the data
-        $this->getFieldsFromXML();
+        $this->getFieldsFromXML(); // this isn't used anymore. Slated for removal if not in use by 1.0 RC.
+    }
+
+    /**
+     * Method to sanitize the free-form textarea input, before inclusion in the <head>.
+     *
+     * @access  private
+     * @param   string  Potentially unsafe HTML code
+     * @return  string  Sanitized HTML code, safe for inclusion
+     * @since   1.0
+     */
+    private function freeformSanitize($html) {
+        // TODO: SANITIZE
+        return $html;
     }
 
     /**
@@ -248,6 +261,10 @@ class plgSystemGoodHead extends JPlugin {
      * @since   1.0
      */
     private function linkTag($rel, $href) {
+        if (empty($rel) || empty($href)) {
+            return;
+        }
+        
         return '<link rel="' . $rel . '" href="' . $href . '" />' . "\n  ";
     }
 
@@ -263,7 +280,7 @@ class plgSystemGoodHead extends JPlugin {
      * @since   1.0
      */
     private function metaTag($name, $content, $scheme = null, $openGraph = false) {
-        if (empty($content)) {
+        if (empty($name) || empty($content)) {
             return;
         }
 
@@ -302,7 +319,7 @@ class plgSystemGoodHead extends JPlugin {
         $this->generateLinkTags();
 
         if ($this->_openGraphFlag) {
-            // Add the xmlns:og to the <html> tag
+            // Add the xmlns:og attribute to the <html> tag
             $patterns = array(chr(1) . '(<html.*)(>)' . chr(1) . 'i');
             $replace = array('${1}' . ' xmlns:og="http://ogp.me/ns#"' . '${2}');
             $buffer = preg_replace($patterns, $replace, $buffer);
@@ -324,8 +341,7 @@ class plgSystemGoodHead extends JPlugin {
 
         // Get custom meta data
         $other = $this->params->get('other');
-        // TODO: SANITIZE $other
-        $this->_head .= $other;
+        $this->_head .= $this->freeformSanitize($other);
 
         // Adjust the buffer.
         $pos = strrpos($buffer, "<title>");
