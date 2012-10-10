@@ -26,7 +26,7 @@
                 <field name="city" type="text" default="" label="PLG_SYSTEM_GOODHEAD_CITY" description="PLG_SYSTEM_GOODHEAD_CITY_DESC" />
                 <field name="state" type="text" default="" label="PLG_SYSTEM_GOODHEAD_STATE" description="PLG_SYSTEM_GOODHEAD_STATE_DESC" />
                 <field name="zip" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ZIP" description="PLG_SYSTEM_GOODHEAD_ZIP_DESC" />
-                <field name="country" type="text" default="" label="PLG_SYSTEM_GOODHEAD_COUNTRY" description="PLG_SYSTEM_GOODHEAD_COUNTRY_DESC" />
+                <field name="country" type="text" default="US" label="PLG_SYSTEM_GOODHEAD_COUNTRY" description="PLG_SYSTEM_GOODHEAD_COUNTRY_DESC" />
                 <field name="phone" type="text" default="" label="PLG_SYSTEM_GOODHEAD_PHONE" description="PLG_SYSTEM_GOODHEAD_PHONE_DESC" />
                 <field name="fax" type="text" default="" label="PLG_SYSTEM_GOODHEAD_FAX" description="PLG_SYSTEM_GOODHEAD_FAX_DESC" />
                 <field name="email" type="text" default="" label="PLG_SYSTEM_GOODHEAD_EMAIL" description="PLG_SYSTEM_GOODHEAD_EMAIL_DESC" />
@@ -36,7 +36,6 @@
                 <field name="longitude" type="text" default="" label="PLG_SYSTEM_GOODHEAD_LONG" description="PLG_SYSTEM_GOODHEAD_LONG_DESC" />
                 <field name="googleverify" type="text" default="" label="PLG_SYSTEM_GOODHEAD_GVERIFY" description="PLG_SYSTEM_GOODHEAD_GVERIFY_DESC" />
                 <field name="alexaverify" type="text" default="" label="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY" description="PLG_SYSTEM_GOODHEAD_ALEXAVERIFY_DESC" />
-                <field name="blogcatalog" type="text" default="" label="PLG_SYSTEM_GOODHEAD_BLOGCATALOG" description="PLG_SYSTEM_GOODHEAD_BLOGCATALOG_DESC" />
             </fieldset>
             <fieldset name="opengraph" label="PLG_SYSTEM_GOODHEAD_OG_SETTINGS">
                 <field name="opengraph_flag" type="radio" default="1" label="PLG_SYSTEM_GOODHEAD_OG_FLAG" description="PLG_SYSTEM_GOODHEAD_OG_FLAG_DESC">
@@ -89,6 +88,7 @@
                     <option value="">PLG_SYSTEM_GOODHEAD_OG_TYPE_WEBSITES</option>
                     <option value="article">PLG_SYSTEM_GOODHEAD_OG_TYPE_ARTICLE</option>
                 </field>
+                <field name="fbadmin" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OG_FBADMIN" description="PLG_SYSTEM_GOODHEAD_OG_FBADMIN_DESC" />
                 <field name="image" type="imagelist" hide_default="true" directory="images" default="" label="PLG_SYSTEM_GOODHEAD_OG_IMAGE" description="PLG_SYSTEM_GOODHEAD_OG_IMAGE_DESC" />
                 <field name="audio" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OG_AUDIO" description="PLG_SYSTEM_GOODHEAD_OG_AUDIO_DESC" />
                 <field name="video" type="text" default="" label="PLG_SYSTEM_GOODHEAD_OG_VIDEO" description="PLG_SYSTEM_GOODHEAD_OG_VIDEO_DESC" />

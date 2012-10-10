@@ -1,14 +1,20 @@
 <?php
+/**
+ * @package	plg_goodhead
+ * @author	Ben Sandberg
+ * @author	Jim Dee
+ * @version	1.0.0
+ */
 
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
 
 /**
- * Plugin class for adding extra fields to the HTML <head>.
+ * Plugin for adding extra fields to the HTML <head>.
  *
- * @package	Joomla.Plugin
- * @subpackage	System.goodhead
+ * @package	plg_goodhead
+ * @subpackage	Plugin
  */
 class plgSystemGoodHead extends JPlugin {
 
@@ -42,7 +48,7 @@ class plgSystemGoodHead extends JPlugin {
         // Set variables
         $app = & JFactory::getApplication();
         $doc = & JFactory::getDocument();
-        $this->_currentURI = JURI::current();
+        $this->_currentURI = JURI::root();
         $this->_locale = $this->prepareLocaleTag($doc->getLanguage());
         $this->_documentType = $doc->getType();
         $this->_dublinCoreFlag = $this->params->get('dublincore_flag', 0);
@@ -167,7 +173,8 @@ class plgSystemGoodHead extends JPlugin {
         // property fb:admins to your page with a comma-separated list of the
         // user IDs or usernames of the Facebook accounts who own the page.
         // See: https://developers.facebook.com/docs/opengraphprotocol/
-        // $this->_head .= $this->metaTag('fb:admins', null, null, true);
+        // TODO: Some sanitization on this [fbadmin] param.
+        $this->_head .= $this->metaTag('fb:admins', $this->params->get('fbadmin'), null, true);
         $this->_head .= $this->metaTag('og:latitude', $this->params->get('latitude'), null, true);
         $this->_head .= $this->metaTag('og:longitude', $this->params->get('longitude'), null, true);
         $this->_head .= $this->metaTag('og:street-address', $this->params->get('address'), null, true);
@@ -206,7 +213,6 @@ class plgSystemGoodHead extends JPlugin {
         $this->_head .= $this->metaTag('geo.placename', $city . $state . $country);
         $this->_head .= $this->metaTag('google-site-verification', $this->params->get('googleverify'));
         $this->_head .= $this->metaTag('alexaVerifyID', $this->params->get('alexaverify'));
-        $this->_head .= $this->metaTag('blogcatalog', $this->params->get('blogcatalog'));
     }
 
     /**
@@ -298,6 +304,17 @@ class plgSystemGoodHead extends JPlugin {
     }
 
     /**
+     * Method to modify core Joomla! robot tags.
+     *
+     * @access  public
+     * @return  void
+     * @since   1.0
+     */
+    private function modifyRobotTags() {
+        return;
+    }
+
+    /**
      * Method to catch the onAfterRender event.
      *
      * @access  public
@@ -316,6 +333,7 @@ class plgSystemGoodHead extends JPlugin {
         }
 
         // Prepare the data.
+        $this->modifyRobotTags();
         $this->generateLinkTags();
 
         if ($this->_openGraphFlag) {
