@@ -1,6 +1,6 @@
 <?php
 /**
- * @package	plg_goodhead
+ * @package	plg_seohead
  * @author	Ben Sandberg
  * @author	Jim Dee
  * @version	1.0.0
@@ -13,10 +13,10 @@ jimport('joomla.plugin.plugin');
 /**
  * Plugin for adding extra fields to the HTML <head>.
  *
- * @package	plg_goodhead
+ * @package	plg_seohead
  * @subpackage	Plugin
  */
-class plgSystemGoodHead extends JPlugin {
+class plgSystemSeoHead extends JPlugin {
 
     private $_currentURI = null;
     private $_documentTitle = null;
@@ -39,10 +39,10 @@ class plgSystemGoodHead extends JPlugin {
      * @return	void
      * @since	1.0
      */
-    public function plgSystemGoodHead(&$subject, $config) {
+    public function plgSystemSeoHead(&$subject, $config) {
         parent::__construct($subject, $config);
 
-        $this->_plugin = JPluginHelper::getPlugin('system', 'goodhead');
+        $this->_plugin = JPluginHelper::getPlugin('system', 'seohead');
         $this->_params = new JForm($this->_plugin->params);
 
         // Set variables
