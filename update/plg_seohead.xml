@@ -2,9 +2,10 @@
 <updates>
    <update>
       <name>SEO Head</name>
-      <description><![CDATA[<div style="text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
-      <element>plg_seohead</element>
+      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
+      <element>seohead</element>
       <type>plugin</type>
+      <folder>system</folder>
       <version>1.0.0</version>
       <infourl title="PDXfixIT">http://www.pdxfixit.com/</infourl>
       <downloads>
@@ -13,13 +14,15 @@
       <maintainer>PDXfixIT</maintainer>
       <maintainerurl>http://www.pdxfixit.com/</maintainerurl>
       <targetplatform name="joomla" version="2.5" />
+      <client_id>site</client_id>
       <client>site</client>
    </update>
    <update>
       <name>SEO Head</name>
-      <description><![CDATA[<div style="text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
+      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
       <element>plg_seohead</element>
       <type>plugin</type>
+      <folder>system</folder>
       <version>1.0.0</version>
       <infourl title="PDXfixIT">http://www.pdxfixit.com/</infourl>
       <downloads>
@@ -28,6 +31,7 @@
       <maintainer>PDXfixIT</maintainer>
       <maintainerurl>http://www.pdxfixit.com/</maintainerurl>
       <targetplatform name="joomla" version="3.0" />
+      <client_id>site</client_id>
       <client>site</client>
    </update>
 </updates>

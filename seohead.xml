@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
-    <name>PLG_SYSTEM_SEOHEAD</name>
+    <name>SEO Head</name>
     <author>PDXfixIT and Marketing Portland</author>
     <creationDate>October 2012</creationDate>
     <copyright>Copyleft (c) 2012 PDXfixIT and Marketing Portland</copyright>
     <authorEmail>info@pdxfixit.com</authorEmail>
     <authorUrl>http://www.pdxfixit.com</authorUrl>
     <version>1.0</version>
-    <description><![CDATA[<div style="text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
+    <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
     <files>
         <file plugin="seohead">seohead.php</file>
         <filename>seohead.xml</filename>
@@ -104,6 +104,6 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="PDXfixIT">http://updates.pdxfixit.com/plg_seohead.xml</server>
+        <server type="collection" priority="1" name="PDXfixIT">http://updates.pdxfixit.com/plg_seohead.xml</server>
     </updateservers>
 </extension>
