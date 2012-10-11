@@ -7,8 +7,7 @@
     <authorEmail>info@pdxfixit.com</authorEmail>
     <authorUrl>http://www.pdxfixit.com</authorUrl>
     <version>1.0</version>
-    <description><![CDATA[<div style="text-align:center;"><a href="http://www.marketingportland.com/" target="_blank"><img src="http://updates.pdxfixit.com/mp-logo.jpg" alt="Marketing Portland" border="0"/></a><br />&nbsp;<br /><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/logo.png" alt="PDXfixIT" border="0"/></a><br /><br />SEO Head Plugin<br />Release Date: October 11, 2012<br />Version: 1.0 RC<br /><br />This plugin allows the modification of various header tags for your site.</div>]]>
-    </description>
+    <description><![CDATA[<div style="text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
     <files>
         <file plugin="seohead">seohead.php</file>
         <filename>seohead.xml</filename>
@@ -104,4 +103,7 @@
             </fieldset>
         </fields>
     </config>
+    <updateservers>
+        <server type="extension" priority="1" name="PDXfixIT">http://updates.pdxfixit.com/plg_seohead.xml</server>
+    </updateservers>
 </extension>
