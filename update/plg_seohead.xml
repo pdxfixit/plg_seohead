@@ -2,11 +2,11 @@
 <updates>
    <update>
       <name>SEO Head</name>
-      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
+      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0.1 RC</div>]]></description>
       <element>seohead</element>
       <type>plugin</type>
       <folder>system</folder>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <infourl title="PDXfixIT">http://www.pdxfixit.com/</infourl>
       <downloads>
          <downloadurl type="full" format="zip">http://updates.pdxfixit.com/plg_seohead.zip</downloadurl>
@@ -19,11 +19,11 @@
    </update>
    <update>
       <name>SEO Head</name>
-      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0 RC</div>]]></description>
+      <description><![CDATA[<div style="font-family: tahoma, sans-serif; text-align: center; width: 422px;"><a href="http://www.pdxfixit.com/" target="_blank"><img src="http://updates.pdxfixit.com/plg_seohead-logo.jpg" alt="SEO Head" border="0"/></a><br /><br />October 11, 2012<br />Version: 1.0.1 RC</div>]]></description>
       <element>plg_seohead</element>
       <type>plugin</type>
       <folder>system</folder>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <infourl title="PDXfixIT">http://www.pdxfixit.com/</infourl>
       <downloads>
          <downloadurl type="full" format="zip">http://updates.pdxfixit.com/plg_seohead.zip</downloadurl>

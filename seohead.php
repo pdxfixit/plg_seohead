@@ -397,7 +397,7 @@ class plgSystemSeoHead extends JPlugin {
     private function prepareLocaleTag($before) {
         $parts = explode('-', $before);
 
-        if (strtolower($parts[1]) == 'gb' && strtolower(substr($this->params->get('country'), 2)) == 'us') {
+        if (strtolower($parts[1]) == 'gb' && strtolower(substr($this->params->get('country', 'us'), 0, 2)) == 'us') {
             $parts[1] = 'US';
         } else {
             $parts[1] = strtoupper($parts[1]);
