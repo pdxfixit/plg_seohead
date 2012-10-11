@@ -98,9 +98,11 @@
                     <option value="1">JYES</option>
                 </field>
             </fieldset>
+            <!--
             <fieldset name="other" label="PLG_SYSTEM_SEOHEAD_OTHER">
                 <field name="other" type="textarea" default="" label="PLG_SYSTEM_SEOHEAD_OTHER_META_DATA" description="PLG_SYSTEM_SEOHEAD_OTHER_META_DATA_DESC" />
             </fieldset>
+            -->
         </fields>
     </config>
     <updateservers>
