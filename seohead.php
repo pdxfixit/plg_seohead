@@ -3,7 +3,7 @@
  * @package	plg_seohead
  * @author	Ben Sandberg
  * @author	Jim Dee
- * @version	1.0.0
+ * @version	1.0.1
  */
 
 defined('_JEXEC') or die('Restricted access');
