@@ -1,11 +1,11 @@
 <?php
+
 /**
  * @package	plg_seohead
  * @author	Ben Sandberg
  * @author	Jim Dee
- * @version	1.0.1
+ * @version	1.0.2
  */
-
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
@@ -18,6 +18,7 @@ jimport('joomla.plugin.plugin');
  */
 class plgSystemSeoHead extends JPlugin {
 
+    private $_canonical = null;
     private $_currentURI = null;
     private $_documentTitle = null;
     private $_documentType = null;
@@ -48,6 +49,7 @@ class plgSystemSeoHead extends JPlugin {
         // Set variables
         $app = & JFactory::getApplication();
         $doc = & JFactory::getDocument();
+        $this->_canonical = JURI::current();
         $this->_currentURI = JURI::root();
         $this->_locale = $this->prepareLocaleTag($doc->getLanguage());
         $this->_documentType = $doc->getType();
@@ -88,7 +90,7 @@ class plgSystemSeoHead extends JPlugin {
         $contact = $this->params->get('contact');
         $email = $this->params->get('email');
         $est = $this->params->get('established');
-        
+
         if (!empty($name)) {
             $copyrightName = ', ' . $name;
         }
@@ -119,7 +121,7 @@ class plgSystemSeoHead extends JPlugin {
      * @since   1.0
      */
     private function generateLinkTags() {
-        $this->_head .= $this->linkTag('canonical', $this->_currentURI);
+        $this->_head .= $this->linkTag('canonical', $this->_canonical);
     }
 
     /**
@@ -141,17 +143,21 @@ class plgSystemSeoHead extends JPlugin {
 
         // Set variables
         $imagePath = $this->_currentURI . 'images/' . $this->params->get('image');
-        $imageData = getimagesize($imagePath);
 
         // required
-        $this->_head .= $this->metaTag('og:url', $this->_currentURI, null, true);
+        $this->_head .= $this->metaTag('og:url', $this->_canonical, null, true);
         $this->_head .= $this->metaTag('og:title', $this->_documentTitle, null, true);
         $this->_head .= $this->metaTag('og:type', $type, null, true);
-        $this->_head .= $this->metaTag('og:image:url', $imagePath, null, true);
-        $this->_head .= $this->metaTag('og:image:type', $imageData['mime'], null, true);
-        $this->_head .= $this->metaTag('og:image:height', $imageData[1], null, true);
-        $this->_head .= $this->metaTag('og:image:width', $imageData[0], null, true);
         // FUTURE FEATURE: Support og:image:secure_url
+
+        if (is_file($imagePath)) { // make sure we've got an actual file
+            $imageData = getimagesize($imagePath);
+            $this->_head .= $this->metaTag('og:image:url', $imagePath, null, true);
+            $this->_head .= $this->metaTag('og:image:type', $imageData['mime'], null, true);
+            $this->_head .= $this->metaTag('og:image:height', $imageData[1], null, true);
+            $this->_head .= $this->metaTag('og:image:width', $imageData[0], null, true);
+        }
+        
         // optional
         $this->_head .= $this->metaTag('og:audio', $this->params->get('audio'), null, true);
         $this->_head .= $this->metaTag('og:description', $this->_metaDesc, null, true);
@@ -198,7 +204,7 @@ class plgSystemSeoHead extends JPlugin {
         $city = $this->params->get('city');
         $state = $this->params->get('state');
         $country = $this->params->get('country');
-        
+
         if (!empty($state)) {
             $state = ', ' . $state;
         }
@@ -270,7 +276,7 @@ class plgSystemSeoHead extends JPlugin {
         if (empty($rel) || empty($href)) {
             return;
         }
-        
+
         return '<link rel="' . $rel . '" href="' . $href . '" />' . "\n  ";
     }
 
